@@ -2,6 +2,14 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve frontend files
+app.use(express.static(__dirname));
 
 dotenv.config();
 
@@ -122,4 +130,5 @@ app.listen(PORT, () => {
     console.log(`🚀 Server running at http://localhost:${PORT}`);
     console.log(`🔑 OpenAI API Key: ${OPENAI_API_KEY ? "✅ Configured" : "❌ Missing"}`);
     console.log(`============================================\n`);
+
 });
